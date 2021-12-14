@@ -72,6 +72,10 @@ Print_Style() {
   printf "%s\n" "${2}$1${NORMAL}"
 }
 
+# Obtener la ruta del directorio de inicio y el nombre de usuario
+DirName=$(readlink -e ~)
+UserName=$(whoami)
+
 # Configuración del nombre minecraft en la cuenta de la nube
 echo "========================================================================="
 echo "========================================================================="
