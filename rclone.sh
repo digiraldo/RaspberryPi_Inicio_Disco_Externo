@@ -5,9 +5,9 @@
 # Instale las dependencias necesarias RClone y fuse para montar la nube
 
 # cd ~
-# wget https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
-# chmod +x cloud.sh
-# ./cloud.sh
+# wget https://raw.githubusercontent.com/digiraldo/RaspberryPi_Inicio_Disco_Externo/main/rclone.sh
+# chmod +x rclone.sh
+# ./rclone.sh
 
 echo "tutorial de instalacion en: https://gorobeta.blogspot.com"
 sleep 4s
