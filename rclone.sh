@@ -167,6 +167,12 @@ fi
 echo "========================================================================="
 sleep 3s
 
+# Eliminando rclone.sh
+  cd ~
+  Print_Style "Eliminando el archivo de configuracion de RClone de home ..." "$MAGENTA"
+  sleep 4s
+  sudo rm -rf rclone.sh
+
 # Verificar archivos sincronizados
 cd ~
 cd $CloudName
