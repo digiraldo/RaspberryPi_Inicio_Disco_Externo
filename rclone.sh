@@ -32,7 +32,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 sudo apt-get install gcsfuse
 
-sudo usermod -a -G fuse $USER
+# sudo usermod -a -G fuse $USER
 
 #servernamec="$ServerName"
 
