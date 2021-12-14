@@ -23,6 +23,7 @@ sudo apt-get install curl -y
 sudo apt-get install sed -y
 sudo curl https://rclone.org/install.sh | sudo bash
 sudo apt-get install fuse -y
+sudo apt-get install libfuse2 -y
 
 #servernamec="$ServerName"
 
