@@ -175,26 +175,3 @@ Print_Style "==============ARCHIVOS Y DIRECTORIOS DE LA NUBE ENCONTRADOS========
 ls -l
 echo "========================================================================="
 sleep 8s
-
-
-# Reiniciar el servidor?
-cd ~
-    echo -n "¿Reiniciar el Servidor Minecraft? (y/n)"
-    read answer < /dev/tty
-    if [ "$answer" != "${answer#[Yy]}" ]; then
-      sudo systemctl daemon-reload
-    sudo systemctl stop servername.service
-      if screen -list | grep -q "servername"; then
-     # El servidor aún no se ha detenido después de 30 segundos, dígale a Screen que lo cierre
-     echo "El servidor de Minecraft aún no se ha cerrado, cerrando la pantalla..."
-     screen -S servername -X quit
-     sleep 10
-      fi
-    sudo systemctl start servername.service
-      # ingresar a la carpeta del servidor minecraft
-      cd ~
-      cd minecraftbe
-      cd servername
-      sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Reiniciando Servidor: .... /'
-Print_Style "========================REINICIANDO SERVIDOR==============================" "$BLINK"
-    fi
