@@ -1,5 +1,3 @@
-
-
 #!/bin/bash
 # Autor: Di Giraldo
 # Instale las dependencias necesarias RClone y fuse para montar la nube
@@ -11,6 +9,9 @@
 
 echo "tutorial de instalacion en: https://gorobeta.blogspot.com"
 sleep 4s
+# Obtener la ruta del directorio de inicio y el nombre de usuario
+DirName=$(readlink -e ~)
+UserName=$(whoami)
 
 cd ~
 echo "Instalando RClone, fuse y otras dependencias..."
@@ -31,8 +32,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 sudo apt-get install gcsfuse
 
-
-sudo usermod -a -G fuse $USER
+sudo usermod -a -G fuse $UserName
 exit
 
 #servernamec="$ServerName"
@@ -83,9 +83,6 @@ Print_Style() {
   printf "%s\n" "${2}$1${NORMAL}"
 }
 
-# Obtener la ruta del directorio de inicio y el nombre de usuario
-DirName=$(readlink -e ~)
-UserName=$(whoami)
 
 # Configuración del nombre minecraft en la cuenta de la nube
 echo "========================================================================="
