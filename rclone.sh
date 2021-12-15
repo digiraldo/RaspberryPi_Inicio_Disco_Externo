@@ -25,6 +25,7 @@ sudo apt-get install sed -y
 sudo curl https://rclone.org/install.sh | sudo bash
 sudo apt-get install fuse -y
 sudo apt-get install libfuse2 -y
+sudo apt-get install unionfs-fuse -y
 
 export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
 echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
@@ -83,7 +84,7 @@ Print_Style() {
 }
 
 
-# Configuración del nombre minecraft en la cuenta de la nube
+# Configuración del nombre en la cuenta de la nube
 echo "========================================================================="
 echo "========================================================================="
 Print_Style "ADVERTENCIA: Antes de seguir debe iniciar sesión en" "$RED"
