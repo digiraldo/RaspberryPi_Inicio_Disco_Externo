@@ -162,7 +162,7 @@ echo "==========================================================================
 
 ## Con eso habremos copiado todo el contenido de la microSD al nuevo SSD. Nos queda el último paso: indicárselo al boot.
 
-# Configuración del nombre minecraft en la cuenta de la nube
+# Configuración del nombre de ruta para que inicie en el dispositivo externo.
 echo "========================================================================="
 echo "========================================================================="
 Print_Style "NOTA: Se acaba de copiar todo el contenido" "$RED"
