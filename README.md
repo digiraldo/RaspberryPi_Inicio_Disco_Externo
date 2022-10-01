@@ -11,7 +11,7 @@ chmod +x RunPi.sh
 
 * Si tiene problemas en el final de la instalacion del nombre root para que inicie desde el almacenamiento externo, usa este codigo, use SSH con un mouse y teclado introduciendo el siguiente comando:
 ```
-wget https://github.com/digiraldo/RaspberryPi_Inicio_Disco_Externo/raw/main/namend.sh  
+wget https://raw.githubusercontent.com/digiraldo/RaspberryPi_Inicio_Disco_Externo/main/namend.sh
 chmod +x namend.sh  
 ./namend.sh
 ```
