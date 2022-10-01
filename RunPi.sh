@@ -58,8 +58,8 @@ fi
 sudo apt update
 sudo apt install ffmpeg -y
 sudo add-apt-repository universe -y
-sudo apt-get install ssh -y
 sudo apt install git -y
+#sudo apt-get install ssh -y
 #sudo apt install -y software-properties-common
 #sudo apt install nginx -y
 #sudo apt -y install libapache2-mod-php
