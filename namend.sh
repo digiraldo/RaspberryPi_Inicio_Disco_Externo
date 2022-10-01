@@ -47,8 +47,28 @@ function read_with_prompt {
   done
 }
 
+### Para acabar con tanta instalación, nos queda como último paso instalar el paquete ffmpeg. Para ello nada más sencillo que poner el comando:
+echo "======================================================================================="
+hostname -I
 
-# Configuración del nombre minecraft en la cuenta de la nube
+### Ver capacidad almacenamiento
+echo "======================================================================================="
+df -h
+sleep 3s
+
+### PASANDO LA INSTALACIÓN A UN DISCO SSD, MUY RECOMENDABLE
+echo "======================================================================================="
+Print_Style "identificando el SSD..." "$CYAN"
+sudo fdisk -l
+sleep 2s
+echo "======================================================================================="
+
+# Digitar la ip del equipo
+echo "========================================================================="
+Print_Style "Introduzca la Ruta del SSD Ej: /dev/sda1" "$MAGENTA"
+read_with_prompt DevSd "Ruta del disco externo"
+echo "========================================================================="
+
 echo "========================================================================="
 echo "========================================================================="
 Print_Style "NOTA: Se acaba de copiar todo el contenido" "$RED"
@@ -84,7 +104,8 @@ Print_Style "Editando Boot..." "$CYAN"
 sudo sed -n "/$RooT/p" /boot/cmdline.txt
 sleep 2s
 echo "======================================================================================="
-echo "Cambiando $RooT ==> ==> por: root=$DevSd"
+echo "Cambiando: $RooT"
+echo "Por:       root=$DevSd"
 echo "======================================================================================="
 sleep 2s
 sudo sed -i "s/$RooT/root=$DevSd/g" /boot/cmdline.txt
