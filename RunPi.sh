@@ -198,7 +198,8 @@ Print_Style "Editando Boot..." "$CYAN"
 sudo sed -n "/$RooT/p" /boot/cmdline.txt
 sleep 2s
 echo "======================================================================================="
-echo "Cambiando $RooT por: root=$DevSd"
+echo "Cambiando: $RooT ==> ==> por: root=$DevSd"
+echo "======================================================================================="
 sleep 2s
 sudo sed -i "s/$RooT/root=$DevSd/g" /boot/cmdline.txt
 sudo sed -n "/root=$DevSd/p" /boot/cmdline.txt
