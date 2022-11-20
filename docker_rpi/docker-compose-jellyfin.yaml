@@ -1,0 +1,25 @@
+version: '3.6'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=998
+      - PGID=100
+      - TZ=America/Bogota
+      - UMASK_SET=022 #optional
+    volumes:
+      #- /home/pi/config:/config
+      #- /home/pi/media:/media
+      #- /home/pi/drive:/drive
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/drive:/drive
+      #- /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/jellyfin/srv/cache:/cache
+      #- /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/jellyfin/srv/log:/log
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/jellyfin/srv/lib/metadata:/metadata
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/jellyfin/srv/lib/transcodes:/transcodes
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/jellyfin:/config
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/HDD_Archivos:/media
+    ports:
+      - 8096:8096
+      #- 8920:8920 #optional
+    restart: unless-stopped

@@ -1,0 +1,35 @@
+---
+version: "2.1"
+services:
+  duckdns:
+    image: ghcr.io/linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1001 #sudo id di
+      - PGID=100 #sudo id userpi
+      - TZ=America/Bogota
+      - SUBDOMAINS=hadime #hadime.duckdns.org
+      - TOKEN=a440f01c-911c-4b5b-822c-36be31f7112a
+      - LOG_FILE=false #optional
+    volumes:
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/duckdns/config:/config #optional
+    restart: unless-stopped
+
+
+
+---
+version: "2.1"
+services:
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    environment:
+      - PUID=1001
+      - PGID=100
+      - TZ=America/Mexico_City
+      - SUBDOMAINS=hadime
+      - TOKEN=a440f01c-911c-4b5b-822c-36be31f7112a
+      - LOG_FILE=false
+    volumes:
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/duckdns/config:/config
+    restart: unless-stopped

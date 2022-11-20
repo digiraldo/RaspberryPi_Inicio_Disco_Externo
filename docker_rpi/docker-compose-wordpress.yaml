@@ -1,0 +1,50 @@
+version: '2.1'
+
+services:
+  wp:
+    image: wordpress
+    restart: always
+    ports:
+      - 8383:80
+    environment:
+      PUID: 1001
+      PGID: 100
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: digiraldo
+      WORDPRESS_DB_PASSWORD: Admin1234
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Docker/wordpress:/var/www/html
+    links:
+      - db:db
+  db:
+    image: ghcr.io/linuxserver/mariadb
+    environment:
+      - PUID=998
+      - PGID=100
+      - MYSQL_ROOT_PASSWORD=Admin1234
+      - TZ=America/Bogota
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=digiraldo
+      - MYSQL_PASSWORD=Admin1234 #Must match the above password
+    volumes:
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Docker/wordpressdb:/config
+    ports:
+      - 3333:3306
+    restart: unless-stopped
+  pma:
+    image: mt08/rpi-phpmyadmin    
+    #depends_on:      
+      #- db
+    ports:      
+      - 8282:80      
+    environment:
+      - PMA_ROOT_USER=digiraldo
+      - PMA_USER=digiraldo
+      - PMA_ARBITARY=1
+      - PMA_HOST=db
+      - PMA_PASSWORD=Admin1234
+
+volumes:
+  wordpress:
+  db:

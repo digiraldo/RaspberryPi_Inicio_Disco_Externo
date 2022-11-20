@@ -1,0 +1,72 @@
+version: "3"
+services:
+  app:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - 80:80 # Public HTTP Port
+      - 443:443 # Public HTTPS Port
+      - 81:81 # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+    environment:
+      DB_MYSQL_HOST: db
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: digiraldo
+      DB_MYSQL_PASSWORD: Admin1234
+      DB_MYSQL_NAME: npm
+      # Uncomment this if IPv6 is not enabled on your host
+      # DISABLE_IPV6: 'true'
+    volumes:
+      #- /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Docker/wordpressdb/nginx/config.json:/app/config/production.json
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Docker/wordpressdb/nginx/data:/data
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Docker/wordpressdb/nginx/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - db
+
+  db:
+    image: yobasystems/alpine-mariadb:10.4.17-arm32v7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: Admin1234
+      MYSQL_DATABASE: npm
+      MYSQL_USER: digiraldo
+      MYSQL_PASSWORD: Admin1234
+    volumes:
+      - /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Docker/wordpressdb/nginx/data/mysql:/var/lib/mysql
+
+
+# Copiar local.yml a ubicacion respaldo
+# sudo cp -r /home/pi/docker-compose.yaml /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/
+
+# Copiar de respaldo a local.yml
+# sudo cp -r /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/docker-compose.yaml /home/pi/
+
+# sudo docker-compose up    sudo docker-compose up -d    ===== Instala Contenedores
+
+# sudo docker-compose down      ==== Detiene y remueve los contenedores
+
+# sudo docker-compose restart
+
+# sudo docker-compose ps     ===== Para listar los containers que se están ejecutando
+
+# sudo docker container ls     ===== Ver contenedores Activos
+
+# sudo docker-compose -f local.yml top     =====Acceder a los procesos
+
+# sudo docker image ls     ===== Lista las imagnes
+
+# sudo docker images -a     ===== Lista las imagnes
+
+# sudo docker image prune -y     ===== Borrar todas las imágenes que no estés utilizando
+
+# sudo docker rmi $(docker images -a -q)     ===== Elimina todas las imágenes de una vez
+
+# sudo docker stop $(docker ps -a -q)     ===== Detén todos los contenedores ejecutándose
+
+# sudo docker rm $(docker ps -a -q)     ===== Elimina todos los contenedores detenidos
+
+
+# Copiar config jellyfine a ubicacion respaldo
+# sudo cp -r /home/pi/config /srv/dev-disk-by-uuid-E0FE6879FE684A3C/Archivos/web/
