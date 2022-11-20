@@ -1,6 +1,18 @@
 version: '2.1'
 
 services:
+  pma:
+    image: mt08/rpi-phpmyadmin    
+    depends_on:      
+      - db
+    ports:      
+      - 8282:80      
+    environment:
+      - PMA_ROOT_USER=digiraldo
+      - PMA_USER=digiraldo
+      - PMA_ARBITARY=1
+      - PMA_HOST=db
+      - PMA_PASSWORD=Admin1234
   wp:
     image: wordpress
     restart: always
@@ -32,18 +44,6 @@ services:
     ports:
       - 3333:3306
     restart: unless-stopped
-  pma:
-    image: mt08/rpi-phpmyadmin    
-    #depends_on:      
-      #- db
-    ports:      
-      - 8282:80      
-    environment:
-      - PMA_ROOT_USER=digiraldo
-      - PMA_USER=digiraldo
-      - PMA_ARBITARY=1
-      - PMA_HOST=db
-      - PMA_PASSWORD=Admin1234
 
 volumes:
   wordpress:
