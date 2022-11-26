@@ -14,12 +14,17 @@ uname -a
 
 
 
-# Crear y Cambiar de Usuario
+# Crear y Cambiar de Usuario: Di
 sudo adduser di
 
 sudo gpasswd -a di adm
-
 sudo gpasswd -a di sudo
+sudo gpasswd -a di di
+sudo gpasswd -a di docker
+sudo gpasswd -a di sambashare
+sudo gpasswd -a di ssh
+sudo gpasswd -a di users
+sudo gpasswd -a di www-data
 
 groups di
 
@@ -57,8 +62,10 @@ sudo reboot
 
 * podemos hacer un ping
 
-sudo wget -O - https://raw.githubusercontent.com/OpenMediaVault-Plugin-Developers/installScript/master/install | sudo bash
 
+```
+sudo wget -O - https://raw.githubusercontent.com/OpenMediaVault-Plugin-Developers/installScript/master/install | sudo bash
+```
 
 Cambiar Contrasena
 Activar Certificado SSL
